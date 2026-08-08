@@ -298,7 +298,7 @@ namespace PVZWPFTrainner
         private void SZombieFrozen_ValueChanged(object sender, System.Windows.RoutedPropertyChangedEventArgs<double> e) { if (SZombieFrozen.IsMouseOver && zombie != null) zombie.FrozenCountdown = (int)(SZombieFrozen.Value * 100); }
         private void BtnZombieButter_Click(object sender, RoutedEventArgs e) { if (zombie != null) zombie.Butter(); }
         private void BtnZombieBlast_Click(object sender, RoutedEventArgs e) { if (zombie != null) zombie.Blast(); }
-        private void BtnZombieHit_Click(object sender, RoutedEventArgs e) { if (zombie != null) { int dt = CBZombieDamageType.SelectedIndex; if (dt >= 3) dt++; zombie.Hit(Convert.ToInt32(TBZombieDamage.Text), dt); } }
+        private void BtnZombieHit_Click(object sender, RoutedEventArgs e) { if (zombie != null) { int dt = CBZombieDamageType.SelectedIndex; if (dt >= 3) dt++; zombie.Hit(Convert.ToInt32(TBZombieDamage.Text), (PVZ.Zombie.DamageType)dt); } }
         #endregion
 
         private void CBHpTrack_Click(object sender, RoutedEventArgs e)
@@ -345,7 +345,7 @@ namespace PVZWPFTrainner
         private void TBCoinX_PreviewKeyDown(object sender, KeyEventArgs e) { if (DealKeyDown(sender, e) && coin != null) coin.X = Convert.ToInt32(TBCoinX.Text); }
         private void TBCoinY_PreviewKeyDown(object sender, KeyEventArgs e) { if (DealKeyDown(sender, e) && coin != null) coin.Y = Convert.ToInt32(TBCoinY.Text); }
         private void TBCoinSize_PreviewKeyDown(object sender, KeyEventArgs e) { if (DealKeyDown(sender, e) && coin != null) coin.Size = Convert.ToInt32(TBCoinSize.Text); }
-        private void CBCoinCard_SelectionChanged(object sender, SelectionChangedEventArgs e) { if (coin != null && CBCoinCard.IsMouseOver && CBCoinCard.SelectedIndex != 53) coin.CardType = CBCoinCard.SelectedIndex; }
+        private void CBCoinCard_SelectionChanged(object sender, SelectionChangedEventArgs e) { if (coin != null && CBCoinCard.IsMouseOver && CBCoinCard.SelectedIndex != 53) coin.CardType = (PVZ.CardType)CBCoinCard.SelectedIndex; }
         private void CBCoinVisible_Click(object sender, RoutedEventArgs e) { if (coin != null) coin.Visible = CBCoinVisible.IsChecked != true; }
         private void CBCoinCollected_Click(object sender, RoutedEventArgs e) { if (coin != null) coin.Collected = (CBCoinCollected.IsChecked == true); }
         private void CBCoinHalo_Click(object sender, RoutedEventArgs e) { if (coin != null) coin.Halo = (CBCoinHalo.IsChecked == true); }
@@ -357,10 +357,10 @@ namespace PVZWPFTrainner
         private void TBGriditemColumn_PreviewKeyDown(object sender, KeyEventArgs e) { if (DealKeyDown(sender, e) && griditem != null) griditem.Column = Convert.ToInt32(TBGriditemColumn.Text); }
         private void CBGriditemExist_Click(object sender, RoutedEventArgs e) { if (griditem != null) griditem.Exist = (CBGriditemExist.IsChecked == true); }
         private void SCraterDisappear_ValueChanged(object sender, System.Windows.RoutedPropertyChangedEventArgs<double> e) { if (SCraterDisappear.IsMouseOver && crater != null) crater.DisappearCountdown = (int)(SCraterDisappear.Value * 100); }
-        private void CBVaseSkin_SelectionChanged(object sender, SelectionChangedEventArgs e) { if (vase != null) vase.Skin = CBVaseSkin.SelectedIndex + 3; }
-        private void CBVaseContent_SelectionChanged(object sender, SelectionChangedEventArgs e) { if (vase != null) vase.Content = CBVaseContent.SelectedIndex; }
-        private void CBVaseZombie_SelectionChanged(object sender, SelectionChangedEventArgs e) { if (vase != null) vase.Zombie = CBVaseZombie.SelectedIndex; }
-        private void CBVasePlant_SelectionChanged(object sender, SelectionChangedEventArgs e) { if (vase != null) vase.Plant = CBVasePlant.SelectedIndex; }
+        private void CBVaseSkin_SelectionChanged(object sender, SelectionChangedEventArgs e) { if (vase != null) vase.Skin = (PVZ.VaseSkin)(CBVaseSkin.SelectedIndex + 3); }
+        private void CBVaseContent_SelectionChanged(object sender, SelectionChangedEventArgs e) { if (vase != null) vase.Content = (PVZ.VaseContent)CBVaseContent.SelectedIndex; }
+        private void CBVaseZombie_SelectionChanged(object sender, SelectionChangedEventArgs e) { if (vase != null) vase.Zombie = (PVZ.ZombieType)CBVaseZombie.SelectedIndex; }
+        private void CBVasePlant_SelectionChanged(object sender, SelectionChangedEventArgs e) { if (vase != null) vase.Plant = (PVZ.PlantType)CBVasePlant.SelectedIndex; }
         private void TBVaseSun_PreviewKeyDown(object sender, KeyEventArgs e) { if (DealKeyDown(sender, e) && vase != null) vase.Sun = Convert.ToInt32(TBVaseSun.Text); }
         private void SVaseTransparent_ValueChanged(object sender, System.Windows.RoutedPropertyChangedEventArgs<double> e) { if (SVaseTransparent.IsMouseOver && crater != null) vase.TransparentCountDown = (int)(SVaseTransparent.Value * 100); }
         #endregion
@@ -374,8 +374,8 @@ namespace PVZWPFTrainner
         private void CBCardVisible_Click(object sender, RoutedEventArgs e) { if (card != null) card.Visible = CBCardVisible.IsChecked == true; }
         private void CBCardEnable_Click(object sender, RoutedEventArgs e) { if (card != null) card.Enable = (CBCardEnable.IsChecked == true); }
         private void CBCardActive_Click(object sender, RoutedEventArgs e) { if (card != null) card.Active = (CBCardActive.IsChecked == true); }
-        private void CBCardType_SelectionChanged(object sender, SelectionChangedEventArgs e) { if (CBCardType.IsMouseOver && card != null && CBCardType.SelectedIndex != 53) card.CardType = CBCardType.SelectedIndex; }
-        private void CBCardTypeImitative_SelectionChanged(object sender, SelectionChangedEventArgs e) { if (CBCardTypeImitative.IsMouseOver && card != null && CBCardType.SelectedIndex != 53) card.ImitativeCardType = CBCardTypeImitative.SelectedIndex; }
+        private void CBCardType_SelectionChanged(object sender, SelectionChangedEventArgs e) { if (CBCardType.IsMouseOver && card != null && CBCardType.SelectedIndex != 53) card.CardType = (PVZ.CardType)CBCardType.SelectedIndex; }
+        private void CBCardTypeImitative_SelectionChanged(object sender, SelectionChangedEventArgs e) { if (CBCardTypeImitative.IsMouseOver && card != null && CBCardType.SelectedIndex != 53) card.ImitativeCardType = (PVZ.PlantType)CBCardTypeImitative.SelectedIndex; }
         private void SCardCoolDowm_ValueChanged(object sender, System.Windows.RoutedPropertyChangedEventArgs<double> e) { if (SCardCoolDowm.IsMouseOver && card != null) card.CoolDown = (int)(SCardCoolDowm.Value * 100); }
         private void SCardBeltX_ValueChanged(object sender, System.Windows.RoutedPropertyChangedEventArgs<double> e) { if (SCardBeltX.IsMouseOver && card != null) card.ConveyorBeltX = (int)(int)SCardBeltX.Value; }
         private void TBCoolDown_PreviewKeyDown(object sender, KeyEventArgs e) { if (DealKeyDown(sender, e) && card != null) card.CoolDownInterval = Convert.ToInt32(TBCoolDown.Text); }
@@ -418,6 +418,6 @@ namespace PVZWPFTrainner
             }
         }
 
-        private void CBSceneType_SelectionChanged(object sender, SelectionChangedEventArgs e) { if (CBSceneType.IsMouseCaptured) PVZ.Scene = CBSceneType.SelectedIndex; }
+        private void CBSceneType_SelectionChanged(object sender, SelectionChangedEventArgs e) { if (CBSceneType.IsMouseCaptured) PVZ.Scene = (PVZ.SceneType)CBSceneType.SelectedIndex; }
     }
 }

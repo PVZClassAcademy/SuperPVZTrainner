@@ -503,25 +503,25 @@ namespace PVZWPFTrainner
         private void NudBound_ValueChanged(object sender, EventArgs e)
         {
             if (!IsLoaded) return;
-            if (RBDamageExpWallNut.IsChecked == true) PVZ.Memory.WriteByte(0x462E7C, (int)NudBound.Value);
-            else if (RBDamageCherryBomb.IsChecked == true) PVZ.Memory.WriteByte(0x4667D9, (int)NudBound.Value);
-            else if (RBDamageDoomShroom.IsChecked == true) PVZ.Memory.WriteByte(0x466837, (int)NudBound.Value);
-            else if (RBDamagePotatoMine.IsChecked == true) PVZ.Memory.WriteByte(0x466A63, (int)NudBound.Value);
-            else if (RBDamageCobCannon.IsChecked == true) PVZ.Memory.WriteByte(0x46D83B, (int)NudBound.Value);
-            else if (RBDamageJackH.IsChecked == true) PVZ.Memory.WriteByte(0x526C53, (int)NudBound.Value);
-            else if (RBDamageJack.IsChecked == true) PVZ.Memory.WriteByte(0x526C6F, (int)NudBound.Value);
+            if (RBDamageExpWallNut.IsChecked == true) PVZ.Memory.WriteByte(0x462E7C, (byte)NudBound.Value);
+            else if (RBDamageCherryBomb.IsChecked == true) PVZ.Memory.WriteByte(0x4667D9, (byte)NudBound.Value);
+            else if (RBDamageDoomShroom.IsChecked == true) PVZ.Memory.WriteByte(0x466837, (byte)NudBound.Value);
+            else if (RBDamagePotatoMine.IsChecked == true) PVZ.Memory.WriteByte(0x466A63, (byte)NudBound.Value);
+            else if (RBDamageCobCannon.IsChecked == true) PVZ.Memory.WriteByte(0x46D83B, (byte)NudBound.Value);
+            else if (RBDamageJackH.IsChecked == true) PVZ.Memory.WriteByte(0x526C53, (byte)NudBound.Value);
+            else if (RBDamageJack.IsChecked == true) PVZ.Memory.WriteByte(0x526C6F, (byte)NudBound.Value);
         }
 
         private void NudRadius_ValueChanged(object sender, EventArgs e)
         {
             if (!IsLoaded) return;
-            if (RBDamageExpWallNut.IsChecked == true) PVZ.Memory.WriteByte(0x462E7E, (int)NudRadius.Value);
-            else if (RBDamageCherryBomb.IsChecked == true) PVZ.Memory.WriteByte(0x4667DB, (int)NudRadius.Value);
-            else if (RBDamageDoomShroom.IsChecked == true) PVZ.Memory.WriteByte(0x466839, (int)NudRadius.Value);
-            else if (RBDamagePotatoMine.IsChecked == true) PVZ.Memory.WriteByte(0x466A65, (int)NudRadius.Value);
-            else if (RBDamageCobCannon.IsChecked == true) PVZ.Memory.WriteByte(0x46D83D, (int)NudRadius.Value);
-            else if (RBDamageJackH.IsChecked == true) PVZ.Memory.WriteByte(0x526C55, (int)NudRadius.Value);
-            else if (RBDamageJack.IsChecked == true) PVZ.Memory.WriteByte(0x526C71, (int)NudRadius.Value);
+            if (RBDamageExpWallNut.IsChecked == true) PVZ.Memory.WriteByte(0x462E7E, (byte)NudRadius.Value);
+            else if (RBDamageCherryBomb.IsChecked == true) PVZ.Memory.WriteByte(0x4667DB, (byte)NudRadius.Value);
+            else if (RBDamageDoomShroom.IsChecked == true) PVZ.Memory.WriteByte(0x466839, (byte)NudRadius.Value);
+            else if (RBDamagePotatoMine.IsChecked == true) PVZ.Memory.WriteByte(0x466A65, (byte)NudRadius.Value);
+            else if (RBDamageCobCannon.IsChecked == true) PVZ.Memory.WriteByte(0x46D83D, (byte)NudRadius.Value);
+            else if (RBDamageJackH.IsChecked == true) PVZ.Memory.WriteByte(0x526C55, (byte)NudRadius.Value);
+            else if (RBDamageJack.IsChecked == true) PVZ.Memory.WriteByte(0x526C71, (byte)NudRadius.Value);
         }
 
         public int scale = 100;
@@ -583,10 +583,10 @@ namespace PVZWPFTrainner
         private void CBDamageTime_SelectionChanged(object sender, SelectionChangedEventArgs e) { if (IsLoaded) TBDamageTime.Text = PVZ.Memory.ReadInteger(DamageTimes[CBDamageTime.SelectedIndex]).ToString(); }
         private void TBDamageTime_PreviewKeyDown(object sender, KeyEventArgs e) { if (DealKeyDown(sender, e)) PVZ.Memory.WriteInteger(DamageTimes[CBDamageTime.SelectedIndex], Convert.ToInt32(TBDamageTime.Text)); }
 
-        private void NudSceneGridRow_ValueChanged(object sender, EventArgs e) { if (IsLoaded) { int row = (int)NudSceneGridRow.Value; CBSceneRouteType.SelectedIndex = PVZ.Lawn.GetRouteType(row); CBSceneGridType.SelectedIndex = PVZ.Lawn.GetGridType(row, (int)NudSceneGridColumn.Value) - 1; } }
-        private void NudSceneGridColumn_ValueChanged(object sender, EventArgs e) { if (IsLoaded) CBSceneGridType.SelectedIndex = PVZ.Lawn.GetGridType((int)NudSceneGridRow.Value, (int)NudSceneGridColumn.Value) - 1; }
-        private void CBSceneGridType_SelectionChanged(object sender, SelectionChangedEventArgs e) { if (CBSceneGridType.IsMouseOver) PVZ.Lawn.SetGridType((int)NudSceneGridRow.Value, (int)NudSceneGridColumn.Value, CBSceneGridType.SelectedIndex + 1); }
-        private void CBSceneRouteType_SelectionChanged(object sender, SelectionChangedEventArgs e) { if (CBSceneRouteType.IsMouseOver) PVZ.Lawn.SetRouteType((int)NudSceneGridRow.Value, CBSceneRouteType.SelectedIndex); }
+        private void NudSceneGridRow_ValueChanged(object sender, EventArgs e) { if (IsLoaded) { int row = (int)NudSceneGridRow.Value; CBSceneRouteType.SelectedIndex = (int)PVZ.Lawn.GetRouteType(row); CBSceneGridType.SelectedIndex = (int)(PVZ.Lawn.GetGridType(row, (int)NudSceneGridColumn.Value) - 1); } }
+        private void NudSceneGridColumn_ValueChanged(object sender, EventArgs e) { if (IsLoaded) CBSceneGridType.SelectedIndex = (int)(PVZ.Lawn.GetGridType((int)NudSceneGridRow.Value, (int)NudSceneGridColumn.Value) - 1); }
+        private void CBSceneGridType_SelectionChanged(object sender, SelectionChangedEventArgs e) { if (CBSceneGridType.IsMouseOver) PVZ.Lawn.SetGridType((int)NudSceneGridRow.Value, (int)NudSceneGridColumn.Value, (PVZ.LawnType)(CBSceneGridType.SelectedIndex + 1)); }
+        private void CBSceneRouteType_SelectionChanged(object sender, SelectionChangedEventArgs e) { if (CBSceneRouteType.IsMouseOver) PVZ.Lawn.SetRouteType((int)NudSceneGridRow.Value, (PVZ.RouteType)CBSceneRouteType.SelectedIndex); }
 
         private void RBPoolSceneNormal_Click(object sender, System.Windows.RoutedEventArgs e) { PVZ.Memory.WriteByte(0x40A668, 0xAE); PVZ.Memory.WriteByte(0x40A66E, 0xAE); PVZ.Memory.WriteByte(0x40A674, 0x8E); PVZ.Memory.WriteByte(0x40A67A, 0x8E); PVZ.Memory.WriteByte(0x40A680, 0xAE); PVZ.Memory.WriteByte(0x40A686, 0xAE); }
         private void RBPoolSceneReverse_Click(object sender, System.Windows.RoutedEventArgs e) { PVZ.Memory.WriteByte(0x40A668, 0x8E); PVZ.Memory.WriteByte(0x40A66E, 0x8E); PVZ.Memory.WriteByte(0x40A674, 0xAE); PVZ.Memory.WriteByte(0x40A67A, 0xAE); PVZ.Memory.WriteByte(0x40A680, 0x8E); PVZ.Memory.WriteByte(0x40A686, 0x8E); }
@@ -601,7 +601,7 @@ namespace PVZWPFTrainner
         private void CBGroundPropety_SelectionChanged(object sender, SelectionChangedEventArgs e) { if (CBGroundPropety.IsMouseOver) TBGroundPropety.Text = PVZ.Memory.ReadInteger(GroundPropetys[CBGroundPropety.SelectedIndex]).ToString(); }
 
         private void TBWharkaZombieSpawnCount_PreviewKeyDown(object sender, KeyEventArgs e) { if (DealKeyDown(sender, e)) PVZ.Memory.WriteInteger(0x426193, Convert.ToInt32(TBWharkaZombieSpawnCount.Text)); }
-        private void NudWharkaZombieZombieSpeed_ValueChanged(object sender, EventArgs e) { if (IsLoaded) PVZ.Memory.WriteByte(0x42630B, (int)NudWharkaZombieZombieSpeed.Value); }
+        private void NudWharkaZombieZombieSpeed_ValueChanged(object sender, EventArgs e) { if (IsLoaded) PVZ.Memory.WriteByte(0x42630B, (byte)NudWharkaZombieZombieSpeed.Value); }
         private void NudWharkaZombieMinGraveCount_ValueChanged(object sender, EventArgs e) { if (IsLoaded) PVZ.Memory.WriteInteger(0x426044, (int)NudWharkaZombieMinGraveCount.Value); }
         private void TBWharkaZombieSpawnSpeed_PreviewKeyDown(object sender, KeyEventArgs e) { if (DealKeyDown(sender, e)) { if (PVZ.Memory.ReadInteger(0x426559) == 412001000) PVZ.Memory.WriteByte(0x426559, 134); PVZ.Memory.WriteInteger(0x42655A, Convert.ToInt32(TBWharkaZombieSpawnSpeed.Text)); } }
 
@@ -648,7 +648,7 @@ namespace PVZWPFTrainner
 
         private void CBMarigoldDrop1_SelectionChanged(object sender, SelectionChangedEventArgs e) { if (CBMarigoldDrop1.IsMouseOver) { PVZ.Memory.WriteByte(0x45FAFC, (byte)(218 + GetCoinTypeValue(CBMarigoldDrop1.SelectedIndex))); PVZ.Memory.WriteByte(0x45FAFF, (byte)(100 - GetCoinTypeValue(CBMarigoldDrop1.SelectedIndex))); } }
         private void CBMarigoldDrop2_SelectionChanged(object sender, SelectionChangedEventArgs e) { if (CBMarigoldDrop2.IsMouseOver) PVZ.Memory.WriteByte(0x45FB0B, GetCoinTypeValue(CBMarigoldDrop2.SelectedIndex)); }
-        private void NudPMarigoldDrop_ValueChanged(object sender, EventArgs e) { if (IsLoaded) PVZ.Memory.WriteByte(0x45FB07, (int)NudPMarigoldDrop.Value); }
+        private void NudPMarigoldDrop_ValueChanged(object sender, EventArgs e) { if (IsLoaded) PVZ.Memory.WriteByte(0x45FB07, (byte)NudPMarigoldDrop.Value); }
 
         private int[,] ConveyorBeltCards = {
             {0x422E42,0x422E4E,0x422E6E,0x422E7A,0,0,0}, {0x422EA0,0x422EB0,0x422EBC,0x422ED0,0,0,0},
@@ -717,7 +717,7 @@ namespace PVZWPFTrainner
             if (cb == null || !cb.IsMouseOver) return;
             int p = cb.SelectedIndex;
             int[] addrs = { 0x482E1A + plant * 5, 0x482F62 + plant * 5, 0x4832AA + plant * 5, 0x484A3D + plant * 5, 0x486B8C + plant * 5, 0x484622 + plant * 5 };
-            foreach (int a in addrs) PVZ.Memory.WriteByte(a, p);
+            foreach (int a in addrs) PVZ.Memory.WriteByte(a, (byte)p);
         }
         private void CBLSLimitPlant1_SelectionChanged(object sender, SelectionChangedEventArgs e) { CBLSLimitPlant_SelectionChanged(sender, e, 0); }
         private void CBLSLimitPlant2_SelectionChanged(object sender, SelectionChangedEventArgs e) { CBLSLimitPlant_SelectionChanged(sender, e, 1); }
@@ -725,10 +725,10 @@ namespace PVZWPFTrainner
         private void CBLSLimitPlant4_SelectionChanged(object sender, SelectionChangedEventArgs e) { CBLSLimitPlant_SelectionChanged(sender, e, 3); }
         private void CBLSLimitPlant5_SelectionChanged(object sender, SelectionChangedEventArgs e) { CBLSLimitPlant_SelectionChanged(sender, e, 4); }
 
-        private void NudPlantLimitLine_ValueChanged(object sender, EventArgs e) { if (IsLoaded) { int line = (int)NudPlantLimitLine.Value; PVZ.Memory.WriteByte(0x425583, line - 1); PVZ.Memory.WriteInteger(0x425392, 20 + 80 * line); } }
-        private void NudZombieLimitLine1_ValueChanged(object sender, EventArgs e) { if (IsLoaded) { int line = (int)NudZombieLimitLine1.Value; PVZ.Memory.WriteByte(0x4255C4, line); PVZ.Memory.WriteInteger(0x4253C7, 20 + 80 * line); } }
-        private void NudZombieLimitLine2_ValueChanged(object sender, EventArgs e) { if (IsLoaded) { int line = (int)NudZombieLimitLine2.Value; PVZ.Memory.WriteByte(0x4255DD, line); PVZ.Memory.WriteInteger(0x4253F7, 20 + 80 * line); } }
-        private void NudZombieLimitLine3_ValueChanged(object sender, EventArgs e) { if (IsLoaded) { int line = (int)NudZombieLimitLine3.Value; PVZ.Memory.WriteByte(0x4255A9, line); PVZ.Memory.WriteInteger(0x425416, 20 + 80 * line); } }
+        private void NudPlantLimitLine_ValueChanged(object sender, EventArgs e) { if (IsLoaded) { int line = (int)NudPlantLimitLine.Value; PVZ.Memory.WriteByte(0x425583, (byte)(line - 1)); PVZ.Memory.WriteInteger(0x425392, 20 + 80 * line); } }
+        private void NudZombieLimitLine1_ValueChanged(object sender, EventArgs e) { if (IsLoaded) { int line = (int)NudZombieLimitLine1.Value; PVZ.Memory.WriteByte(0x4255C4, (byte)line); PVZ.Memory.WriteInteger(0x4253C7, 20 + 80 * line); } }
+        private void NudZombieLimitLine2_ValueChanged(object sender, EventArgs e) { if (IsLoaded) { int line = (int)NudZombieLimitLine2.Value; PVZ.Memory.WriteByte(0x4255DD, (byte)line); PVZ.Memory.WriteInteger(0x4253F7, 20 + 80 * line); } }
+        private void NudZombieLimitLine3_ValueChanged(object sender, EventArgs e) { if (IsLoaded) { int line = (int)NudZombieLimitLine3.Value; PVZ.Memory.WriteByte(0x4255A9, (byte)line); PVZ.Memory.WriteInteger(0x425416, 20 + 80 * line); } }
 
         private void TB95NewsZombieBodyHp_PreviewKeyDown(object sender, KeyEventArgs e) { if (DealKeyDown(sender, e)) PVZ.Memory.WriteInteger(0x4002FF, Convert.ToInt32(TB95NewsZombieBodyHp.Text)); }
         private void TB95FlagZombieBodyHp_PreviewKeyDown(object sender, KeyEventArgs e) { if (DealKeyDown(sender, e)) PVZ.Memory.WriteInteger(0x40049F, Convert.ToInt32(TB95FlagZombieBodyHp.Text)); }
