@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PVZWPFTrainner"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:darkstyle="clr-namespace:DarkStyle;assembly=DarkStyle"
-        x:Class="ModifyWindow" Loaded="Window_Loaded"
+        x:Class="PVZWPFTrainner.ModifyWindow" Loaded="Window_Loaded"
         mc:Ignorable="d" PreviewMouseWheel="Window_PreviewMouseWheel"
         Title="修改窗口" Height="470" Width="400" MouseDown="Window_MouseDown"
         WindowStyle="None" ResizeMode="NoResize" Closed="Window_Closed"
