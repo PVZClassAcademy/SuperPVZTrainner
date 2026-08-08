@@ -330,7 +330,7 @@ namespace PVZWPFTrainner
                 if (e.Key == Key.C)
                 {
                     listbox.Tag = listbox.SelectedIndex;
-                    try { Clipboard.SetText(((ListBox)listbox).Items.GetItemAt(Convert.ToInt32(((ListBox)listbox).Tag)).Tag?.ToString()); }
+                    try { var item = listbox.Items.GetItemAt(Convert.ToInt32(listbox.Tag)); Clipboard.SetText(((FrameworkElement)item).Tag?.ToString()); }
                     catch (ArgumentNullException) { Clipboard.SetText("+ <=> -"); }
                 }
                 if (e.Key == Key.V)
@@ -592,7 +592,7 @@ namespace PVZWPFTrainner
                     };
                     Canvas.SetBottom(btn, 10);
                     Canvas.SetLeft(btn, 195);
-                    btn.Click += output.Close;
+                    btn.Click += (s, ev) => output.Close();
                     output.MainCanvas.Children.Add(btn);
                     output.ShowDialog();
                 }

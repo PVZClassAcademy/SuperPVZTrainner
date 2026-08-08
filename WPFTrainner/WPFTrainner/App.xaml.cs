@@ -39,6 +39,7 @@ namespace PVZWPFTrainner
         {
             AppDomain.CurrentDomain.AppendPrivatePath("Extension");
             var app = new App();
+            app.InitializeComponent();
             if (Debugger.IsAttached)
             {
                 app.Run();

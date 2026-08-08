@@ -366,7 +366,7 @@ namespace PVZWPFTrainner
         #endregion
 
         #region CardSlot
-        private void CBCardSlotVisible_Click(object sender, RoutedEventArgs e) { PVZ.CardSlot.Visible = CBCardSlotVisible.IsChecked; }
+        private void CBCardSlotVisible_Click(object sender, RoutedEventArgs e) { PVZ.CardSlot.Visible = CBCardSlotVisible.IsChecked == true; }
         private void LBCards_SelectionChanged(object sender, SelectionChangedEventArgs e) { try { preselcardid = Convert.ToInt32(((TextBlock)LBCards.SelectedItem).Text); } catch { } }
         private void CBCardNum_SelectionChanged(object sender, SelectionChangedEventArgs e) { if (CBCardNum.IsMouseCaptured) PVZ.CardSlot.SetCardNum(CBCardNum.SelectedIndex); }
         private void TBCardX_PreviewKeyDown(object sender, KeyEventArgs e) { if (DealKeyDown(sender, e) && card != null) card.X = Convert.ToInt32(TBCardX.Text); }
