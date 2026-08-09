@@ -36,11 +36,6 @@ namespace PVZWPFTrainner
                 foreach (string f in Directory.GetFiles("Extension", "*.dll"))
                     AddExtension(Path.GetFullPath(f));
             }
-            if (Directory.Exists("Scripts"))
-            {
-                foreach (string f in Directory.GetFiles("Scripts", "*.pvzs"))
-                    AddLBIScr(Path.GetFullPath(f));
-            }
             Lang.ChangeLanguage(Content);
         }
 
@@ -89,44 +84,6 @@ namespace PVZWPFTrainner
             }
             Application.Current.Shutdown();
             System.Windows.Forms.Application.Exit();
-        }
-
-        private void AddLBIScr(string scriptfile)
-        {
-            if (ChecckPlugIns(scriptfile)) return;
-            string ALBIStr = File.ReadAllText(scriptfile);
-            ALBIStr = ALBIStr.TrimEnd('\r', ' ', '\n');
-            if (ALBIStr.EndsWith("End") || ALBIStr.EndsWith("EndScript"))
-            {
-                var Btn = new DarkStyle.DarkButton();
-                string[] substr = scriptfile.Split('\\');
-                string name = substr[substr.Length - 1];
-                Btn.Content = name.Substring(0, name.Length - 5);
-                Btn.Tag = scriptfile;
-                Btn.Style = FindResource("LBIBtnnStyle1") as Style;
-                Btn.Width = 175;
-                Btn.Click += ButtonScript_Click;
-                ListPlugIns.Items.Add(Btn);
-            }
-        }
-
-        private void ButtonScript_Click(object sender, RoutedEventArgs e)
-        {
-            var pvzscript = new Process();
-            pvzscript.StartInfo.FileName = "PVZScript.exe";
-            pvzscript.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            pvzscript.StartInfo.Arguments = "\"" + ((FrameworkElement)sender).Tag + "\"";
-            try
-            {
-                pvzscript.Start();
-            }
-            catch (System.ComponentModel.Win32Exception)
-            {
-                if (Lang.Id == 1)
-                    MessageBox.Show("The program PVZScriptNoConsole.exe was not found." + Environment.NewLine + "Please place the program in the PVZScript directory", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
-                else
-                    MessageBox.Show("没有找到程序PVZScriptNoConsole.exe,请将程序放置到PVZScript目录下", "警告", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
         }
 
         private bool ChecckPlugIns(string file)
@@ -301,22 +258,14 @@ namespace PVZWPFTrainner
         private void BtnLoadLBMain_Click(object sender, RoutedEventArgs e)
         {
             if (Lang.Id == 1)
-                openFileDlg.Filter = "extension plugin|*.dll|pvz script file|*.pvzs";
+                openFileDlg.Filter = "extension plugin|*.dll";
             else
-                openFileDlg.Filter = "扩展插件|*.dll|pvz脚本文件|*.pvzs";
+                openFileDlg.Filter = "扩展插件|*.dll";
             openFileDlg.Title = Lang.Id == 1 ? "Load PlugIn" : "载入插件";
             if (openFileDlg.ShowDialog() == true)
             {
-                if (openFileDlg.FilterIndex == 1)
-                {
-                    foreach (string f in openFileDlg.FileNames)
-                        AddExtension(f);
-                }
-                else if (openFileDlg.FilterIndex == 2)
-                {
-                    foreach (string f in openFileDlg.FileNames)
-                        AddLBIScr(f);
-                }
+                foreach (string f in openFileDlg.FileNames)
+                    AddExtension(f);
             }
         }
 

@@ -8,6 +8,11 @@ namespace PVZWPFTrainner
 {
     public partial class OperationWindow : Window
     {
+        public OperationWindow()
+        {
+            InitializeComponent();
+        }
+
         private void Window_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
             Lang.ChangeLanguage(Content);
