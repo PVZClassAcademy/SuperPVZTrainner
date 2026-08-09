@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PVZWPFTrainner"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:darkstyle="clr-namespace:DarkStyle;assembly=DarkStyle"
-    x:Class="MonitorWindow"
+    x:Class="PVZWPFTrainner.MonitorWindow"
         mc:Ignorable="d"
         Title="监视窗口" Height="470" Width="400" MouseDown="Window_MouseDown" Closed="Window_Closed"
         WindowStyle="None" ResizeMode="NoResize" Loaded="Window_Loaded" PreviewMouseWheel="Window_PreviewMouseWheel"
