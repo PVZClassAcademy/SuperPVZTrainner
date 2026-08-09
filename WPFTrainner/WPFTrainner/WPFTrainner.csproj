@@ -112,6 +112,7 @@
       <DependentUpon>SeparateWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MyControls.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="App.xaml">
