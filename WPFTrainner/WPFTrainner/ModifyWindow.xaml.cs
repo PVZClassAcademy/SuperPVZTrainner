@@ -9,6 +9,11 @@ namespace PVZWPFTrainner
 {
     public partial class ModifyWindow : Window
     {
+        public ModifyWindow()
+        {
+            InitializeComponent();
+        }
+
         private bool DealKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Space) { ((TextBox)sender).Text = "0"; e.Handled = true; }
