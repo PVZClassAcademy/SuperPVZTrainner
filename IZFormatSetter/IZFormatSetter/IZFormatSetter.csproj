@@ -172,9 +172,9 @@
       <Project>{d8139ca9-13ce-424d-aa26-2902f064b972}</Project>
       <Name>DarkStyle</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\PVZClass\PVZClass\PVZClass.vbproj">
+    <ProjectReference Include="..\..\PVZClass\PVZClass\PVZClassVB.vbproj">
       <Project>{04dd5200-2f9e-465d-a87a-3116782d580c}</Project>
-      <Name>PVZClass</Name>
+      <Name>PVZClassVB</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\WPFTrainner\ITrainerExtension\ITrainerExtension.csproj">
       <Project>{09098c39-9152-4f2f-a042-a4e4f504e96d}</Project>
