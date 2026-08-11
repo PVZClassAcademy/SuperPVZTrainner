@@ -1,0 +1,5 @@
+[submodule "PVZClassMain"]
+	path = PVZClassMain
+	url = https://github.com/PVZClassAcademy/pvzclass
+	branch = Stable
+	shallow = true
